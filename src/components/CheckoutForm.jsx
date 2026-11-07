@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 const MAHALLAHS = [
   "Ali",
@@ -32,6 +33,7 @@ function validate(values) {
 }
 
 function CheckoutForm({ onPlaceOrder }) {
+  const navigate = useNavigate();
   const [values, setValues] = useState({
     name: "",
     mahallah: "",
@@ -52,6 +54,7 @@ function CheckoutForm({ onPlaceOrder }) {
 
     if (Object.keys(found).length === 0) {
       onPlaceOrder(values);
+      navigate("/orders");
     }
   }
 

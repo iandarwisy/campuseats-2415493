@@ -1,4 +1,9 @@
-function MenuItemCard({ item, onAdd, isFavourite, onToggleFavourite }) {
+import { useCart } from "../hooks/useCart.js";
+
+function MenuItemCard({ item }) {
+  const { addToCart, favourites = [], toggleFavourite } = useCart() || {};
+  const isFavourite = favourites.includes(item.id);
+
   return (
     <article className="card menu-card">
       <div className="thumb" aria-hidden="true">
@@ -14,19 +19,21 @@ function MenuItemCard({ item, onAdd, isFavourite, onToggleFavourite }) {
         }}
       >
         <h3>{item.name}</h3>
-        <button
-          type="button"
-          onClick={() => onToggleFavourite(item.id)}
-          style={{
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-            fontSize: "1.2rem",
-          }}
-          title={isFavourite ? "Remove from favourites" : "Add to favourites"}
-        >
-          {isFavourite ? "❤️" : "🤍"}
-        </button>
+        {toggleFavourite && (
+          <button
+            type="button"
+            onClick={() => toggleFavourite(item.id)}
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              fontSize: "1.2rem",
+            }}
+            title={isFavourite ? "Remove from favourites" : "Add to favourites"}
+          >
+            {isFavourite ? "❤️" : "🤍"}
+          </button>
+        )}
       </div>
 
       <p className="muted">{item.description}</p>
@@ -34,7 +41,7 @@ function MenuItemCard({ item, onAdd, isFavourite, onToggleFavourite }) {
       <button
         className="btn"
         disabled={!item.available}
-        onClick={() => onAdd(item)}
+        onClick={() => addToCart && addToCart(item)}
       >
         {item.available ? "Add to cart" : "Sold out"}
       </button>

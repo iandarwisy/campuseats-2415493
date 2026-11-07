@@ -23,3 +23,10 @@ Add a new section every week, before you tag. Did not use AI? Write "None" under
 - What I asked for: converting JavaScript data structures into JSON format, fetching the JSON file using useEffect and fixing a cart error
 - What I kept, changed or rejected, and why: i kept the state function structure in App.jsx(for cart management and favourites filtering) because it was effective
 - One thing the AI got wrong and how I fixed it: there was a minor syntax error when combining classmates' JSON data, which i identified and fixed so the API could be read properly
+
+## Week 4
+
+- Tool(s): ChatGPT
+- What I asked for: how to implement custom hooks, React Context, React Router, favourite item feature and troubleshooting navigation issues
+- What I kept, changed or rejected, and why: i used the explaination and code suggestion to implement shared state management using CartProvider, organize the application into separate pages. i corrected the vendor navigation path to match the route configuration in app.jsx
+- One thing the AI got wrong and how I fixed it: vendor navigation path initially used /vendors instead of /vendor and i corrected the link in VendorCard.jsx

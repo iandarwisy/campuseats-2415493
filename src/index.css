@@ -283,3 +283,20 @@ button.card:hover {
 .error {
   border-left: 4px solid #b3261e;
 }
+/* Perbaikan tampilan Link di Week 4 */
+a.card,
+.vendor-card {
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav a.active {
+  text-decoration: underline;
+  font-weight: 700;
+}
