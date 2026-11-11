@@ -30,3 +30,10 @@ Add a new section every week, before you tag. Did not use AI? Write "None" under
 - What I asked for: how to implement custom hooks, React Context, React Router, favourite item feature and troubleshooting navigation issues
 - What I kept, changed or rejected, and why: i used the explaination and code suggestion to implement shared state management using CartProvider, organize the application into separate pages. i corrected the vendor navigation path to match the route configuration in app.jsx
 - One thing the AI got wrong and how I fixed it: vendor navigation path initially used /vendors instead of /vendor and i corrected the link in VendorCard.jsx
+
+## Week 5
+
+- Tool(s): Deepseek
+- What I asked for: guide step by step to implement firebase authentication into my existing project, including configuration, login and register pages, protected routes
+- What I kept, changed or rejected, and why: i kept all the guidance and code suggestion since it help me to understand well. i changed the favourited implementation to use firebase uid to make sure each users has their own favourite
+- One thing the AI got wrong and how I fixed it: i adjusted the login link stylng to match with the campuseats theme

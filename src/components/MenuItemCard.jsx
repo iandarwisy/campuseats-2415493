@@ -1,7 +1,11 @@
+import { Link } from "react-router";
 import { useCart } from "../hooks/useCart.js";
+import { useAuth } from "../hooks/useAuth.js";
 
 function MenuItemCard({ item }) {
   const { addToCart, favourites = [], toggleFavourite } = useCart() || {};
+  const { user } = useAuth();
+
   const isFavourite = favourites.includes(item.id);
 
   return (
@@ -9,6 +13,7 @@ function MenuItemCard({ item }) {
       <div className="thumb" aria-hidden="true">
         {item.name.charAt(0)}
       </div>
+
       <p className="tag">{item.category}</p>
 
       <div
@@ -19,7 +24,8 @@ function MenuItemCard({ item }) {
         }}
       >
         <h3>{item.name}</h3>
-        {toggleFavourite && (
+
+        {user ? (
           <button
             type="button"
             onClick={() => toggleFavourite(item.id)}
@@ -33,11 +39,15 @@ function MenuItemCard({ item }) {
           >
             {isFavourite ? "❤️" : "🤍"}
           </button>
+        ) : (
+          <Link to="/login">Log in to save favourites</Link>
         )}
       </div>
 
       <p className="muted">{item.description}</p>
+
       <p className="price">RM {item.price.toFixed(2)}</p>
+
       <button
         className="btn"
         disabled={!item.available}

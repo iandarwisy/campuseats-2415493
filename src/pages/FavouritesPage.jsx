@@ -1,11 +1,26 @@
+import { Link } from "react-router";
 import { useVendors } from "../hooks/useVendors.js";
 import { useCart } from "../hooks/useCart.js";
+import { useAuth } from "../hooks/useAuth.js";
 import MenuList from "../components/MenuList.jsx";
 import { Loading, ErrorMessage } from "../components/Status.jsx";
 
 function FavouritesPage() {
+  const { user } = useAuth();
   const { vendors, loading, error, reload } = useVendors();
   const { favourites } = useCart();
+
+  if (!user) {
+    return (
+      <section>
+        <h2 className="section-title">Your Favourite Items ❤️</h2>
+        <p className="muted">
+          Please <Link to="/login">log in</Link> to view and save your favourite
+          items.
+        </p>
+      </section>
+    );
+  }
 
   if (loading) return <Loading />;
   if (error) return <ErrorMessage message={error} onRetry={reload} />;
@@ -17,6 +32,7 @@ function FavouritesPage() {
   return (
     <section>
       <h2 className="section-title">Your Favourite Items ❤️</h2>
+
       {favItems.length === 0 ? (
         <p className="muted">
           You haven't added any favourite items yet. Click the heart icon on any
